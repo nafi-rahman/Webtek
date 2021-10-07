@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration form</title>
+</head>
+
+<body>
+    <form action="FormAction.php">
+        <h1>Registration form</h1>
+        <fieldset>
+            <legend>Basic information:</legend>
+            First Name: <input type="text" name="fn">
+            <br>
+            <br>
+            Last Name: <input type="text" name="ln">
+            <br>
+            <br>
+            Gender:
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female
+            <br>
+            <br>
+            Date of birth: <input type="date" name="dob">
+            <br>
+            <br>
+            Religion:
+            <select name="rel">
+                <option value="islam">Islam</option>
+                <option value="christian">Christian</option>
+                <option value="hindu">Hindu</option>
+                <option value="other">Other</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Contact information:</legend>
+            Present Address: <textarea name='pA'></textarea>
+            <br>
+            <br>
+            Permanent Address: <textarea name="PerA"></textarea>
+            <br>
+            <br>
+            Phone: <input type="tel" name="phone">
+            <br>
+            <br>
+            Email: <input type="email" name="email">
+            <br>
+            <br>
+            Personal website: <input type="url" name="PW">
+            <br>
+            <br>
+        </fieldset>
+        <input type="submit" name="submit" value="Register">
+    </form>
+</body>
+
+</html>
