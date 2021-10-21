@@ -1,76 +1,66 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Add beneficiary</title>
 </head>
 
 <body>
-
-
-	<?php
-		
-		$am = 0;
-		$request_method = $_SERVER['REQUEST_METHOD'];
-		if ($request_method === 'POST'){
-			$am = $_POST['amount'];
-		}
-	?>
-
-    <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-        <h1>Page 1 [Home]</h1>
+   <form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+        <h1>Page 2 [Add beneficiary]</h1>
         
         <p>Digital Wallet</p>
         <a href="home.php" > 1. Home</a>
 		<a href="Add beneficiary.php" > 2. Add beneficiary</a>
 		<a href="Transaction.php" > 3. Transaction</a>
         
-		<p>Fund Transfer: </p>
-		
-		Select Category:
-		<select name="cat">
-		<option value="C1">Send Money</option>
-		<option value="C2">Mobile Recharge</option>
-		
-		</select>
-
-
+		<p>Add beneficiary: </p>
 		
 		<br>
 		<br>
+		Beneficiary name: <input type="text" name="name"> Mobile: <input type="tel" name="mob">
+		<br>
+		<br>
+		<input type="submit" name="submit" value="Register">
 		
-		To:
-		<select name="to">
-		<option value="T1">TO 1</option>
-		<option value="T2">TO 2</option>
-		<option value="T3">TO 3</option>
-		</select>
+		<table>
+		<?php
+			if ($_SERVER['REQUEST_METHOD'] === "POST") {
+			echo "<table border='1'>";	
+			echo "<tr>";
+			echo "<th>";
+			echo "name";
+			echo "</th>";
+			echo "<th>";
+			echo "mobile";
+			echo "</th>";
+			echo "</tr>";
+			echo "<tr>";
+			echo "<td>";
+			echo $_POST['name'];
+			echo "</td>";
+			echo "<td>";
+			echo $_POST['mob'];
+			echo "</td>";
+			echo "</tr>";
+ 			echo "</table>";
+			}
+			?>
+		</table>
 		
-		<br>
-		<br>
-		Amount: <input type="number_format" name="amount" >
-		<br>
-		<br>
-		<input type="submit" name="submit" value="submit">
-    	
-    	
-
     </form>
-
     <?php 
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-           $cat = $_POST['cat'];
-           $to = $_POST['to'];
-           $amount = $_POST['amount'];
+           $name = $_POST['name'];
+           $mobile = $_POST['mob'];
+           
 
             $isValid = false;
 
-            if (empty($amount) or $cat == "select" or $to ==
-                "select" ) {
+            if (empty($name) or empty($mob) ) {
             	$isValid = false;
                 echo "form isn't filled up properly";
             }
@@ -78,7 +68,7 @@
                 $isValid = true;
             }
             if ($isValid) { 
-            $handle1 = fopen("transH.json", "a");
+            $handle1 = fopen("benifi.json", "a");
 
             $arr = array('category' => $cat, 'to' => $to, 
                 'amount'=> $amount);
@@ -97,8 +87,6 @@
         }
 
     ?>
-
-
 </body>
 
 </html>
